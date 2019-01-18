@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 在浏览器中使用 先引入-->
+    <script src="node_modules/_art-template@4.13.2@art-template/lib/template-web.js"></script>
+</head>
+
+<body>
+    <!-- 使用 type="text/template"
+    
+    强调： template不关心你的字符串内容，只关心它自己能认识的模板标记语法 例如：{{ }}
+    {{ }} 是被称之为 mustache 语法（八字胡语法）
+
+    -->
+    <script type="text/template" id="tpl">
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Document</title>
+        </head>
+        <body>       
+            我叫： {{ name }}，
+            我 {{ age }}岁了，
+            我来自 {{ address }},
+            我喜欢：{{each arr }} {{ $value}} {{/each}} 
+            
+        </body>
+        </html>
+    </script>
+    <script>
+        var ert = template('tpl', {
+            name: 'Jack',
+            age: "16",
+            address: "南充",
+            arr: [
+                '打篮球', '游泳'
+            ]
+        })
+        console.log('template输出', ert);
+    </script>
+</body>
+
+</html>

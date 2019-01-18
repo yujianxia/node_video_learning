@@ -1,0 +1,43 @@
+<!-- 公共的模板 -->
+<html lang="zh-en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- 这里留一个坑，可以让子页面有自己的样式 没有的话也不会生成元素 对页面没有影响-->
+    {{ block 'head' }} {{ /block }}
+    <title>Document</title>
+    <style>
+        .card-header {
+            background-color: red;
+        }
+
+        .index-h1 {
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    {{include './header.html'}}
+    <!-- 留个坑在这里，留给子页面填坑 填坑用相同的语法-->
+    {{block 'content'}}
+    <h1>默认内容</h1>
+
+    {{/block}} 
+    {{include './footer.html'}}
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+        function cnolFun(){
+         console.log('我是layout的脚本',);
+         
+        }
+        cnolFun()
+    </script>
+    {{ block 'script' }} {{ /block }}
+</body>
+
+</html>

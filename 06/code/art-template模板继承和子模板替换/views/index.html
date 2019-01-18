@@ -1,0 +1,27 @@
+<!-- 模板继承 -->
+{{extend './layout.html'}}
+
+{{ block 'head' }} 
+ <style>
+ .qqq{
+     font-size: 18px;
+     background-color: gray;
+     margin: 10px 0;
+     padding: 0;
+ }
+ </style>
+{{ /block }}
+
+
+{{block 'content'}} 
+<h1 class="qqq">我是填充的内容，有自己的样式</h1>
+
+{{/block}}
+
+
+
+{{ block 'script' }}
+<script>
+    console.log('我是index的script')
+</script>
+{{ /block }}

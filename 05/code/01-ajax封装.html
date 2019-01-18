@@ -1,0 +1,53 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // setTimeout
+        // readFlie
+        // wirteFlie
+        // readir
+        // ajax
+    // 往往异步API都有一个回调函数 
+
+
+
+    // 原生ajax
+    // var xhr = new XMLHttpRequest();
+    // // onload 成功之后的回调
+    // xhr.onload = function () {
+    //   console.log('success',xhr.responseText);
+    // };
+    // xhr.open('get','data.json',true);
+    // xhr.send();
+
+
+    // 封装
+    function get(url,callback) {
+      var xhr = new XMLHttpRequest();
+      // onload 成功之后的回调
+      xhr.onload = function () {
+        callback(xhr.responseText);
+      };
+      xhr.open('get','data.json',true);
+      xhr.send();
+
+    }
+    // 调用
+    get('data.json',function(data){
+      console.log('封装获取的data',data);
+    })
+
+
+
+    </script>
+
+</body>
+
+</html>
