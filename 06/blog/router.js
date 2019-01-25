@@ -14,7 +14,7 @@ router.get('/', function (req, res) {
 router.get('/login', function (req, res) {
   res.render('login.html')
 })
-
+// 登录接口
 router.post('/login', function (req, res) {
   // 1. 获取表单数据
   // 2. 查询数据库用户名密码是否正确
@@ -53,7 +53,7 @@ router.post('/login', function (req, res) {
 router.get('/register', function (req, res) {
   res.render('register.html')
 })
-
+// 注册接口
 router.post('/register', function (req, res) {
   // 1. 获取表单提交的数据
   //    req.body
@@ -64,6 +64,7 @@ router.post('/register', function (req, res) {
   // 3. 发送响应
   var body = req.body
   User.findOne({
+    // 写法就是 或 的意思
     $or: [{
         email: body.email
       },

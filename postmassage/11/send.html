@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>window.postMessage</title>
+    <meta charset="utf-8" />
+    <h1>test接收区</h1>
+</head>
+
+<body>
+<!-- 可以传递参数  但是不能获取异步返回结果后再返回 -->
+
+    <h1 class="header">page A</h1>
+    <div class="mb20">
+        <textarea name="ta" id="data" cols="30" rows="5">hello world</textarea>
+        <button style="font-size:20px;" onclick="send()">post message</button>
+    </div>
+    <!-- 跨域的情况 -->
+    <iframe src="http://192.168.99.102:8081/11/test.html" id="child" style="display: block; border: 1px dashed #ccc; height: 300px;"></iframe>
+
+    <script>
+        function send() {
+            var data = document.querySelector('#data').value;
+
+            document.getElementById("child").contentWindow.postMessage(data, 'http://192.168.99.102:8081/11/send.html'); // 触发跨域子页面的messag事件
+        }
+
+        window.addEventListener('message', function (messageEvent) {
+            var data = messageEvent.data;
+
+            console.log('test发送的', data);
+            // setTimeout(function () {
+            //     document.write("1s 之后", data);
+            //     // document.body.style.background = 'red';
+            // }, 1000)
+
+            // setTimeout(function () {
+            //     document.write("3s 之后", data);
+            //     document.body.style.background = 'red';
+            // }, 3000)
+        }, false);
+    </script>
+</body>
+
+</html>

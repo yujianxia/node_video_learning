@@ -1,10 +1,15 @@
+/**
+ * 这个js就相当于一个创建，保存用户信息的数据表 
+ * 
+ */
+
 var mongoose = require('mongoose')
 
 // 连接数据库
 mongoose.connect('mongodb://localhost/test', { useMongoClient: true })
 
 var Schema = mongoose.Schema
-
+// .设计表结构（集合结构），指定数据类型和结构
 var userSchema = new Schema({
   email: {
     type: String,
@@ -54,5 +59,8 @@ var userSchema = new Schema({
     default: 0
   }
 })
+
+//将文档结构发布为模型并且导出
+// mongoose.model() 方法就是把一个架构发布为一个model
 
 module.exports = mongoose.model('User', userSchema)

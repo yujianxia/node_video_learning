@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <h1 class="header">page B</h1>
+
+    <input type="text" id="inp" value="我想你">
+    <button onclick="send()">send</button>
+
+</body>
+
+
+<script>
+    window.addEventListener('message', function (ev) {
+        // if (ev.source !== window.parent) {return;}
+        setTimeout(function () {
+            var data = ev.data;
+            document.write("send发送的", data);
+            document.body.style.background = 'red';
+        }, 1000)
+
+    }, false);
+
+    function send() {
+        var data = document.querySelector('#inp').value;
+        // window.parent.postMessage(data, 'http://127.0.0.1:8081/11/send.html'); // 若父页面的域名和指定的不一致，则postMessage失败
+        console.log('马上执行', );
+        setTimeout(function () {
+            console.log('11111111111111', );
+        }, 1000)
+
+        setTimeout(function () {
+            console.log('22222222222222', );
+        }, 2000)
+
+        setTimeout(function () {
+            parent.postMessage('触发父页面的message事件', '*'); // 触发父页面的message事件
+        }, 3000)
+
+        parent.postMessage(data, '*'); // 触发父页面的message事件
+
+
+    }
+</script>
+
+</html>

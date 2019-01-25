@@ -44,8 +44,10 @@
   <script src="/node_modules/jquery/dist/jquery.js"></script>
   <script>
     $('#register_form').on('submit', function (e) {
+      // 阻止默认提交方式
       e.preventDefault()
-      var formData = $(this).serialize()
+      // 表单序列化
+      var formData = $(this).serialize();
       $.ajax({
         url: '/register',
         type: 'post',
